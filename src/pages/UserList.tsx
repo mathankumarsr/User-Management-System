@@ -24,8 +24,8 @@ const UserList: React.FC = () => {
   const [editingUser, setEditingUser] = useState<any>(null);
 
   useEffect(() => {
-    dispatch(fetchUsersAsync({ page: currentPage, pageSize, search: searchQuery }));
-  }, [dispatch, currentPage, pageSize, searchQuery]);
+    dispatch(fetchUsersAsync({ page: currentPage, pageSize }));
+  }, [dispatch, currentPage, pageSize]);
 
   const handleSearch = (value: string) => {
     dispatch(setSearchQuery(value));
