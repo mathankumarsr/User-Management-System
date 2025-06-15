@@ -20,11 +20,11 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route 
-        path="/login" 
+        path="/" 
         element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} 
       />
       <Route 
-        path="/" 
+        path="/userList" 
         element={isAuthenticated ? <UserList /> : <Navigate to="/login" replace />} 
       />
       <Route path="*" element={<Navigate to="/" replace />} />
