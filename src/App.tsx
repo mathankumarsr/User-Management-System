@@ -25,7 +25,7 @@ const App: React.FC = () => {
       />
       <Route 
         path="/userList" 
-        element={isAuthenticated ? <UserList /> : <Navigate to="/login" replace />} 
+        element={isAuthenticated ? <UserList /> : <Navigate to="/" replace />} 
       />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
