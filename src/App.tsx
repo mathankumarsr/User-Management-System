@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
 import { Spin } from 'antd';
-import Login from './pages/Login'
+import Login from './pages/Login';
 import UserList from './pages/UserList';
 
 const App: React.FC = () => {
@@ -21,12 +21,14 @@ const App: React.FC = () => {
     <Routes>
       <Route 
         path="/" 
-        element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} 
+        element={isAuthenticated ? <Navigate to="/userList" replace /> : <Login />} 
       />
+
       <Route 
         path="/userList" 
         element={isAuthenticated ? <UserList /> : <Navigate to="/" replace />} 
       />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
