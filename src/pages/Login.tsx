@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
 import { loginAsync, clearError } from '../store/slices/authSlice';
 import { validateEmail } from '../utlis/validation';
+import { useNavigate } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -16,6 +17,7 @@ interface LoginFormValues {
 
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { loading, error } = useSelector((state: RootState) => state.auth);
   const [form] = Form.useForm();
 
@@ -23,6 +25,7 @@ const Login: React.FC = () => {
     dispatch(clearError());
     try {
       await dispatch(loginAsync(values)).unwrap();
+      navigate('/userList')
     } catch (error: any) {
       console.error(error?.message)
     }
